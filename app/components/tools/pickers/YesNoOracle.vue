@@ -1,23 +1,23 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4 text-center">
       <p class="text-gray-600 dark:text-gray-400">Ask a yes/no question and let the oracle decide.</p>
-      <AppInput v-model="question" placeholder="Type your question..." />
-      <AppButton :disabled="!question.trim()" @click="ask">
+      <CommonAppInput v-model="question" placeholder="Type your question..." />
+      <CommonAppButton :disabled="!question.trim()" @click="ask">
         Ask the Oracle
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result?.answer" :show-confetti="result?.answer === 'Yes'" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result?.answer" :show-confetti="result?.answer === 'Yes'" class="mt-6">
     <div class="text-center">
       <p class="mb-1 text-sm text-gray-500 dark:text-gray-400">{{ result?.question }}</p>
       <p class="text-4xl font-bold" :class="answerColor">{{ result?.answer }}</p>
       <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">{{ result?.detail }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="yes-no-oracle" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="yes-no-oracle" />
 </template>
 
 <script setup lang="ts">

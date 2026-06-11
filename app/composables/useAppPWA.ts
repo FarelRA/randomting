@@ -1,4 +1,4 @@
-export function usePWA() {
+export function useAppPWA() {
   const isOnline = ref(true)
   const isInstallable = ref(false)
   const updateAvailable = ref(false)

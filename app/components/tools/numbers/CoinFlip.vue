@@ -1,14 +1,14 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
-      <AppInput v-model.number="count" label="Number of Coins" type="number" :min="1" :max="100" hint="1-100" />
-      <AppButton @click="flip">
+      <CommonAppInput v-model.number="count" label="Number of Coins" type="number" :min="1" :max="100" hint="1-100" />
+      <CommonAppButton @click="flip">
         Flip {{ count }} Coin{{ count > 1 ? 's' : '' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="resultText" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="resultText" :show-confetti="true" class="mt-6">
     <div class="space-y-4">
       <div class="flex justify-center gap-8">
         <div class="text-center">
@@ -28,9 +28,9 @@
         </span>
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="coin-flip" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="coin-flip" />
 </template>
 
 <script setup lang="ts">

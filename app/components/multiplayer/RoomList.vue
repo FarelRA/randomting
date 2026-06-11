@@ -11,12 +11,12 @@
     </svg>
     <h3 class="mt-4 text-lg font-medium text-gray-900 dark:text-gray-100">No active rooms</h3>
     <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">Create a room to get started</p>
-    <AppButton to="/multiplayer/create" class="mt-6">
+    <CommonAppButton to="/multiplayer/create" class="mt-6">
       Create Your First Room
-    </AppButton>
+    </CommonAppButton>
   </div>
   <div v-else class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    <RoomCard v-for="room in rooms" :key="room.id" :room="room" />
+    <MultiplayerRoomCard v-for="room in rooms" :key="room.id" :room="room" />
   </div>
 </template>
 

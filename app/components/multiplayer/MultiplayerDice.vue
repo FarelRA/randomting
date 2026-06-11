@@ -19,13 +19,13 @@
     </div>
 
     <div class="mb-4 flex items-center justify-center gap-4">
-      <AppSelect v-model="diceCount" :options="diceOptions" label="Dice" />
-      <AppSelect v-model="diceSides" :options="sideOptions" label="Sides" />
+      <CommonAppSelect v-model="diceCount" :options="diceOptions" label="Dice" />
+      <CommonAppSelect v-model="diceSides" :options="sideOptions" label="Sides" />
     </div>
 
-    <AppButton size="lg" :disabled="rolling" @click="roll">
+    <CommonAppButton size="lg" :disabled="rolling" @click="roll">
       {{ rolling ? 'Rolling...' : 'Roll Dice' }}
-    </AppButton>
+    </CommonAppButton>
   </div>
 </template>
 

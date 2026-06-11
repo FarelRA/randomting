@@ -1,22 +1,22 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div>
         <label class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Names (one per line)</label>
         <textarea v-model="namesText" rows="6" class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100" placeholder="Alice&#10;Bob&#10;Charlie&#10;Diana" />
       </div>
       <div class="flex items-center gap-2">
-        <AppSelect v-model="mode" :options="modeOptions" label="Mode" />
-        <AppInput v-if="mode === 'size'" v-model.number="groupSize" label="Per Group" type="number" :min="1" :max="names.length" />
-        <AppInput v-else v-model.number="groupCount" label="Group Count" type="number" :min="1" :max="names.length" />
+        <CommonAppSelect v-model="mode" :options="modeOptions" label="Mode" />
+        <CommonAppInput v-if="mode === 'size'" v-model.number="groupSize" label="Per Group" type="number" :min="1" :max="names.length" />
+        <CommonAppInput v-else v-model.number="groupCount" label="Group Count" type="number" :min="1" :max="names.length" />
       </div>
-      <AppButton :disabled="names.length === 0" @click="generate">
+      <CommonAppButton :disabled="names.length === 0" @click="generate">
         Create Groups
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :show-confetti="true" class="mt-6">
     <div class="space-y-4">
       <div v-for="(group, i) in result" :key="i">
         <h4 class="mb-2 font-semibold text-primary-600 dark:text-primary-400">Group {{ i + 1 }} ({{ group.length }})</h4>
@@ -25,9 +25,9 @@
         </div>
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="group-maker" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="group-maker" />
 </template>
 
 <script setup lang="ts">

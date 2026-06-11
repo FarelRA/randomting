@@ -8,6 +8,6 @@
       <p class="mt-2 text-gray-600 dark:text-gray-400">Set up a multiplayer room for you and your friends</p>
     </div>
 
-    <CreateRoomForm />
+    <MultiplayerCreateRoomForm />
   </div>
 </template>

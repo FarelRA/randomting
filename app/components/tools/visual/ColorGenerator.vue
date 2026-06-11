@@ -1,26 +1,26 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppSelect v-model="format" label="Format" :options="formatOptions" />
-        <AppInput v-model.number="count" label="Count" type="number" :min="1" :max="20" hint="1-20" />
+        <CommonAppSelect v-model="format" label="Format" :options="formatOptions" />
+        <CommonAppInput v-model.number="count" label="Count" type="number" :min="1" :max="20" hint="1-20" />
       </div>
-      <AppButton @click="generate">
+      <CommonAppButton @click="generate">
         Generate {{ count }} Color{{ count > 1 ? 's' : '' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="result && result.length > 0" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="result && result.length > 0" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
     <div class="space-y-3">
       <div v-for="(color, i) in result" :key="i" class="flex items-center gap-3">
         <div class="h-10 w-10 shrink-0 rounded-lg border dark:border-gray-600" :style="{ backgroundColor: color.hex }" />
         <span class="font-mono text-sm font-medium">{{ color.formatted }}</span>
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="color-generator" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="color-generator" />
 </template>
 
 <script setup lang="ts">

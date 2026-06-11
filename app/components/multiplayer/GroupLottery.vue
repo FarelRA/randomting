@@ -7,10 +7,10 @@
     </div>
 
     <div v-if="!entered" class="mb-6">
-      <AppInput v-model="entryText" placeholder="Your entry (optional)" />
-      <AppButton class="mt-2" :disabled="!canJoin" @click="joinPool">
+      <CommonAppInput v-model="entryText" placeholder="Your entry (optional)" />
+      <CommonAppButton class="mt-2" :disabled="!canJoin" @click="joinPool">
         Join the Pool
-      </AppButton>
+      </CommonAppButton>
     </div>
     <div v-else class="mb-6 text-sm text-green-600 dark:text-green-400">
       You're in the pool!
@@ -18,14 +18,14 @@
 
     <div v-if="isHost && entryCount > 0" class="mb-6">
       <div class="mb-2 flex items-center justify-center gap-2">
-        <AppInput v-model.number="drawCount" type="number" :min="1" :max="entryCount" label="Winners to draw" />
+        <CommonAppInput v-model.number="drawCount" type="number" :min="1" :max="entryCount" label="Winners to draw" />
       </div>
-      <AppButton variant="secondary" @click="draw">
+      <CommonAppButton variant="secondary" @click="draw">
         Draw {{ drawCount }} Winner{{ drawCount > 1 ? 's' : '' }}
-      </AppButton>
-      <AppButton variant="ghost" class="ml-2 text-red-500" @click="reset">
+      </CommonAppButton>
+      <CommonAppButton variant="ghost" class="ml-2 text-red-500" @click="reset">
         Reset Pool
-      </AppButton>
+      </CommonAppButton>
     </div>
 
     <div v-if="lastWinners.length > 0" class="rounded-lg bg-green-50 p-4 dark:bg-green-900/20">

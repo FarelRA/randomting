@@ -1,7 +1,7 @@
 <template>
   <div>
-    <HeroSection />
-    <PopularTools />
-    <CategoryGrid />
+    <LandingHeroSection />
+    <LandingPopularTools />
+    <LandingCategoryGrid />
   </div>
 </template>

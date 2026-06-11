@@ -1,8 +1,8 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppInput v-model.number="length" label="Length" type="number" :min="4" :max="128" hint="4-128" />
+        <CommonAppInput v-model.number="length" label="Length" type="number" :min="4" :max="128" hint="4-128" />
       </div>
       <div class="space-y-2">
         <label class="flex items-center gap-2">
@@ -26,17 +26,17 @@
           <span class="text-sm text-gray-700 dark:text-gray-300">Exclude ambiguous (il1Lo0O)</span>
         </label>
       </div>
-      <AppButton :disabled="!hasCharType" @click="generate">
+      <CommonAppButton :disabled="!hasCharType" @click="generate">
         Generate Password
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result" :show-confetti="true" class="mt-6">
     <p class="break-all font-mono text-2xl font-bold tracking-wider text-primary-600 dark:text-primary-400">{{ result }}</p>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="password-generator" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="password-generator" />
 </template>
 
 <script setup lang="ts">

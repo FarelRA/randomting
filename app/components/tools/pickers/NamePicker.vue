@@ -1,28 +1,28 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div>
         <label class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Names (one per line)</label>
         <textarea v-model="namesText" rows="6" class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100" placeholder="Alice&#10;Bob&#10;Charlie" />
       </div>
       <div class="flex items-center gap-4">
-        <AppInput v-model.number="pickCount" label="Pick Count" type="number" :min="1" :max="maxPick" hint="0 = pick all" />
+        <CommonAppInput v-model.number="pickCount" label="Pick Count" type="number" :min="1" :max="maxPick" hint="0 = pick all" />
       </div>
-      <AppButton :disabled="names.length === 0" @click="pick">
+      <CommonAppButton :disabled="names.length === 0" @click="pick">
         Pick {{ pickCount || 'All' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
     <div class="space-y-2">
       <div v-for="(name, i) in result" :key="i" class="rounded-lg bg-primary-50 px-4 py-2 text-lg font-semibold text-primary-700 dark:bg-primary-900/50 dark:text-primary-300">
         {{ name }}
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="name-picker" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="name-picker" />
 </template>
 
 <script setup lang="ts">

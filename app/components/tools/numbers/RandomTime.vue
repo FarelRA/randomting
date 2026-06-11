@@ -1,21 +1,21 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppInput v-model="startTime" label="Start Time" type="time" />
-        <AppInput v-model="endTime" label="End Time" type="time" />
+        <CommonAppInput v-model="startTime" label="Start Time" type="time" />
+        <CommonAppInput v-model="endTime" label="End Time" type="time" />
       </div>
-      <AppButton @click="generate">
+      <CommonAppButton @click="generate">
         Generate Random Time
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result" :show-confetti="true" class="mt-6">
     <p class="text-2xl font-bold text-primary-600 dark:text-primary-400">{{ result }}</p>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="random-time" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="random-time" />
 </template>
 
 <script setup lang="ts">

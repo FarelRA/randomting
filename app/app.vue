@@ -23,7 +23,7 @@ useSeoMeta({
   twitterDescription: 'One website, all random tools, no ads, no hopping between sites.',
 })
 
-const { isOnline, isInstallable, updateAvailable, install } = usePWA()
+const { isOnline, isInstallable, updateAvailable, install } = useAppPWA()
 
 provide('pwa', { isOnline, isInstallable, updateAvailable, install })
 </script>

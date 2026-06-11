@@ -1,26 +1,26 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-3">
-        <AppInput v-model.number="rangeMin" label="From" type="number" :max="rangeMax - 1" />
-        <AppInput v-model.number="rangeMax" label="To" type="number" :min="rangeMin + 1" />
-        <AppInput v-model.number="pickCount" label="Pick" type="number" :min="1" :max="maxPick" :hint="`1-${maxPick}`" />
+        <CommonAppInput v-model.number="rangeMin" label="From" type="number" :max="rangeMax - 1" />
+        <CommonAppInput v-model.number="rangeMax" label="To" type="number" :min="rangeMin + 1" />
+        <CommonAppInput v-model.number="pickCount" label="Pick" type="number" :min="1" :max="maxPick" :hint="`1-${maxPick}`" />
       </div>
-      <AppButton @click="pick">
+      <CommonAppButton @click="pick">
         Pick {{ pickCount }} Numbers
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
     <div class="flex flex-wrap gap-2">
       <span v-for="(num, i) in result" :key="i" class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary-100 text-lg font-bold text-primary-700 dark:bg-primary-900 dark:text-primary-300">
         {{ num }}
       </span>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="lottery" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="lottery" />
 </template>
 
 <script setup lang="ts">

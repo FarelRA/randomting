@@ -1,25 +1,25 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppSelect v-model="category" label="Category" :options="categoryOptions" />
+        <CommonAppSelect v-model="category" label="Category" :options="categoryOptions" />
       </div>
-      <AppButton :disabled="loading" @click="fetchFact">
+      <CommonAppButton :disabled="loading" @click="fetchFact">
         {{ loading ? 'Loading...' : 'Show Me a Fact' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
   <p v-if="error" class="mt-4 text-sm text-red-500">{{ error }}</p>
 
-  <ResultDisplay :visible="!!fact" :copy-text="fact?.content" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!fact" :copy-text="fact?.content" :show-confetti="true" class="mt-6">
     <div class="space-y-2">
       <p class="text-lg leading-relaxed text-gray-800 dark:text-gray-200">{{ fact?.content }}</p>
       <p v-if="fact?.category" class="text-xs text-gray-400 dark:text-gray-500">Category: {{ fact.category }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="random-fact" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="random-fact" />
 </template>
 
 <script setup lang="ts">

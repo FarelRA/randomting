@@ -1,24 +1,24 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppSelect v-model="gradientType" label="Type" :options="typeOptions" />
-        <AppSelect v-model="colorCount" label="Colors" :options="colorCountOptions" />
+        <CommonAppSelect v-model="gradientType" label="Type" :options="typeOptions" />
+        <CommonAppSelect v-model="colorCount" label="Colors" :options="colorCountOptions" />
       </div>
-      <AppButton @click="generate">
+      <CommonAppButton @click="generate">
         Generate Gradient
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!css" :copy-text="css" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!css" :copy-text="css" :show-confetti="true" class="mt-6">
     <div class="space-y-4">
       <div class="h-32 rounded-xl" :style="{ background: css }" />
       <p class="font-mono text-xs text-gray-500 dark:text-gray-400">{{ css }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="gradient-generator" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="gradient-generator" />
 </template>
 
 <script setup lang="ts">

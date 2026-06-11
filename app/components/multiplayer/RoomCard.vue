@@ -1,6 +1,6 @@
 <template>
   <NuxtLink :to="`/multiplayer/room/${room.id}`" class="block">
-    <AppCard hover>
+    <CommonAppCard hover>
       <div class="flex items-start justify-between">
         <div class="flex-1">
           <h3 class="font-semibold">{{ room.name }}</h3>
@@ -26,7 +26,7 @@
           {{ room.onlinePlayers }} online
         </span>
       </div>
-    </AppCard>
+    </CommonAppCard>
   </NuxtLink>
 </template>
 

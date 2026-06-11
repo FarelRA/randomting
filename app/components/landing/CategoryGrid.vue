@@ -25,13 +25,13 @@
 
 <script setup lang="ts">
 const catIconMap: Record<string, any> = {
-  numbers: resolveComponent('IconNumbers'),
-  pickers: resolveComponent('IconPickers'),
-  groups: resolveComponent('IconGroups'),
-  strings: resolveComponent('IconStrings'),
-  visual: resolveComponent('IconVisual'),
-  fun: resolveComponent('IconFun'),
-  interactive: resolveComponent('IconInteractive'),
-  multiplayer: resolveComponent('IconMultiplayer'),
+  numbers: resolveComponent('LandingIconNumbers'),
+  pickers: resolveComponent('LandingIconPickers'),
+  groups: resolveComponent('LandingIconGroups'),
+  strings: resolveComponent('LandingIconStrings'),
+  visual: resolveComponent('LandingIconVisual'),
+  fun: resolveComponent('LandingIconFun'),
+  interactive: resolveComponent('LandingIconInteractive'),
+  multiplayer: resolveComponent('LandingIconMultiplayer'),
 }
 </script>

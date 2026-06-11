@@ -1,17 +1,17 @@
 <template>
   <div>
-    <PlayerList :players="players" :host-id="hostId" :is-host="isHost" @kick="$emit('kick', $event)" />
+    <MultiplayerPlayerList :players="players" :host-id="hostId" :is-host="isHost" @kick="$emit('kick', $event)" />
 
     <div class="mt-6 flex flex-wrap gap-3">
-      <AppButton v-if="!isHost" variant="secondary" @click="$emit('ready')">
+      <CommonAppButton v-if="!isHost" variant="secondary" @click="$emit('ready')">
         {{ iAmReady ? 'Unready' : 'Ready' }}
-      </AppButton>
-      <AppButton v-if="isHost && allReady" @click="$emit('start')">
+      </CommonAppButton>
+      <CommonAppButton v-if="isHost && allReady" @click="$emit('start')">
         Start Game
-      </AppButton>
-      <AppButton variant="ghost" class="text-red-500" @click="$emit('leave')">
+      </CommonAppButton>
+      <CommonAppButton variant="ghost" class="text-red-500" @click="$emit('leave')">
         Leave Room
-      </AppButton>
+      </CommonAppButton>
     </div>
 
     <p v-if="!isHost && allReady" class="mt-4 text-sm text-gray-500 dark:text-gray-400">

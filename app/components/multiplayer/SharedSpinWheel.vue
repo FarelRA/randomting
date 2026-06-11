@@ -6,9 +6,9 @@
 
     <div v-if="!spinning" class="space-y-4">
       <div v-if="isHost">
-        <AppButton size="lg" @click="spin">
+        <CommonAppButton size="lg" @click="spin">
           Spin the Wheel
-        </AppButton>
+        </CommonAppButton>
       </div>
       <p v-else class="text-sm text-gray-500">Waiting for the host to spin...</p>
     </div>

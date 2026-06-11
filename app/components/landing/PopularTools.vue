@@ -6,9 +6,9 @@
           <h2 class="text-2xl font-bold">Popular Tools</h2>
           <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">Most used randomizers</p>
         </div>
-        <AppButton to="/tools" variant="ghost" size="sm">
+        <CommonAppButton to="/tools" variant="ghost" size="sm">
           View All &rarr;
-        </AppButton>
+        </CommonAppButton>
       </div>
       <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <NuxtLink

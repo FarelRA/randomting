@@ -1,23 +1,23 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppSelect v-model="version" label="UUID Version" :options="versionOptions" />
-        <AppInput v-model.number="count" label="Count" type="number" :min="1" :max="100" hint="1-100" />
+        <CommonAppSelect v-model="version" label="UUID Version" :options="versionOptions" />
+        <CommonAppInput v-model.number="count" label="Count" type="number" :min="1" :max="100" hint="1-100" />
       </div>
-      <AppButton @click="generate">
+      <CommonAppButton @click="generate">
         Generate {{ count }} UUID{{ count > 1 ? 's' : '' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="result && result.length > 0" :copy-text="result?.join('\n')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="result && result.length > 0" :copy-text="result?.join('\n')" :show-confetti="true" class="mt-6">
     <div class="space-y-1">
       <p v-for="(uuid, i) in result" :key="i" class="font-mono text-sm text-primary-600 dark:text-primary-400">{{ uuid }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="uuid-generator" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="uuid-generator" />
 </template>
 
 <script setup lang="ts">

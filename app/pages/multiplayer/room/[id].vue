@@ -2,14 +2,14 @@
   <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
     <template v-if="!joined && !joining">
       <div class="mx-auto max-w-sm">
-        <AppCard>
+        <CommonAppCard>
           <h2 class="mb-4 text-xl font-bold">Join Room</h2>
           <p v-if="joinError" class="mb-4 text-sm text-red-500">{{ joinError }}</p>
-          <AppInput v-model="username" label="Your Name" placeholder="Enter your username" />
-          <AppButton class="mt-4 w-full" :disabled="!username.trim()" @click="handleJoin">
+          <CommonAppInput v-model="username" label="Your Name" placeholder="Enter your username" />
+          <CommonAppButton class="mt-4 w-full" :disabled="!username.trim()" @click="handleJoin">
             Join Room
-          </AppButton>
-        </AppCard>
+          </CommonAppButton>
+        </CommonAppCard>
       </div>
     </template>
 
@@ -38,9 +38,9 @@
 
       <div class="grid gap-8 lg:grid-cols-3">
         <div class="lg:col-span-2">
-          <AppCard>
+          <CommonAppCard>
             <template v-if="room.status === 'waiting'">
-              <RoomLobby
+              <MultiplayerRoomLobby
                 :players="players"
                 :host-id="room.hostId"
                 :is-host="isHost"
@@ -52,7 +52,7 @@
               />
             </template>
             <template v-else>
-              <SharedSpinWheel
+              <MultiplayerSharedSpinWheel
                 v-if="room.tool === 'spin-wheel'"
                 :segments="wheelSegments"
                 :is-host="isHost"
@@ -66,7 +66,7 @@
                 :player-name="you?.username || ''"
                 @roll="handleDiceRoll"
               />
-              <GroupLottery
+              <MultiplayerGroupLottery
                 v-else-if="room.tool === 'lottery'"
                 ref="lotteryRef"
                 :is-host="isHost"
@@ -75,7 +75,7 @@
                 @draw="handleLotteryDraw"
                 @reset="handleLotteryReset"
               />
-              <RandomBattle
+              <MultiplayerRandomBattle
                 v-else-if="room.tool === 'battle'"
                 ref="battleRef"
                 :players="players"
@@ -88,22 +88,22 @@
               </p>
 
               <div v-if="room.status === 'playing'" class="mt-6 border-t border-gray-200 pt-6 dark:border-gray-700">
-                <AppButton variant="ghost" class="text-red-500" @click="handleLeave">
+                <CommonAppButton variant="ghost" class="text-red-500" @click="handleLeave">
                   Leave Room
-                </AppButton>
+                </CommonAppButton>
               </div>
             </template>
-          </AppCard>
+          </CommonAppCard>
         </div>
 
         <div>
-          <AppCard>
-            <ChatPanel
+          <CommonAppCard>
+            <MultiplayerChatPanel
               :messages="chatMessages"
               :my-id="you?.id"
               @send="handleSendChat"
             />
-          </AppCard>
+          </CommonAppCard>
         </div>
       </div>
     </template>

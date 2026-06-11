@@ -5,14 +5,14 @@
         <h1 class="text-2xl font-bold">{{ title }}</h1>
         <p class="text-sm text-gray-500 dark:text-gray-400">{{ description }}</p>
       </div>
-      <AppButton @click="openCreate">
+      <CommonAppButton @click="openCreate">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14" /><path d="M5 12h14" /></svg>
         Add {{ itemName }}
-      </AppButton>
+      </CommonAppButton>
     </div>
 
     <div v-if="loading" class="space-y-4">
-      <LoadingSkeleton v-for="i in 5" :key="i" lines="1" :widths="['100%']" />
+      <CommonLoadingSkeleton v-for="i in 5" :key="i" lines="1" :widths="['100%']" />
     </div>
 
     <div v-else-if="items.length === 0" class="rounded-xl border border-gray-200 bg-white p-12 text-center dark:border-gray-800 dark:bg-gray-900">
@@ -50,15 +50,15 @@
               </button>
             </td>
             <td class="px-4 py-3 text-right">
-              <AppButton variant="ghost" size="sm" @click="openEdit(item)">Edit</AppButton>
-              <AppButton variant="ghost" size="sm" class="text-red-500 hover:text-red-700 dark:hover:text-red-400" @click="confirmDelete(item)">Delete</AppButton>
+              <CommonAppButton variant="ghost" size="sm" @click="openEdit(item)">Edit</CommonAppButton>
+              <CommonAppButton variant="ghost" size="sm" class="text-red-500 hover:text-red-700 dark:hover:text-red-400" @click="confirmDelete(item)">Delete</CommonAppButton>
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <AppModal :open="modalOpen" :title="editing ? `Edit ${itemName}` : `Add ${itemName}`" @close="closeModal">
+    <CommonAppModal :open="modalOpen" :title="editing ? `Edit ${itemName}` : `Add ${itemName}`" @close="closeModal">
       <form class="space-y-4" @submit.prevent="save">
         <div class="space-y-1">
           <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Content</label>
@@ -80,19 +80,19 @@
         </div>
         <p v-if="saveError" class="text-sm text-red-500">{{ saveError }}</p>
         <div class="flex justify-end gap-2">
-          <AppButton type="button" variant="secondary" @click="closeModal">Cancel</AppButton>
-          <AppButton type="submit" :disabled="saving">{{ editing ? 'Update' : 'Add' }}</AppButton>
+          <CommonAppButton type="button" variant="secondary" @click="closeModal">Cancel</CommonAppButton>
+          <CommonAppButton type="submit" :disabled="saving">{{ editing ? 'Update' : 'Add' }}</CommonAppButton>
         </div>
       </form>
-    </AppModal>
+    </CommonAppModal>
 
-    <AppModal :open="deleteModalOpen" title="Confirm Delete" @close="deleteModalOpen = false">
+    <CommonAppModal :open="deleteModalOpen" title="Confirm Delete" @close="deleteModalOpen = false">
       <p class="text-sm text-gray-600 dark:text-gray-400">Are you sure you want to delete this {{ itemName.toLowerCase() }}? This action cannot be undone.</p>
       <div class="mt-4 flex justify-end gap-2">
-        <AppButton variant="secondary" @click="deleteModalOpen = false">Cancel</AppButton>
-        <AppButton variant="danger" :disabled="deleting" @click="doDelete">Delete</AppButton>
+        <CommonAppButton variant="secondary" @click="deleteModalOpen = false">Cancel</CommonAppButton>
+        <CommonAppButton variant="danger" :disabled="deleting" @click="doDelete">Delete</CommonAppButton>
       </div>
-    </AppModal>
+    </CommonAppModal>
   </div>
 </template>
 

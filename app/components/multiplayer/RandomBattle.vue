@@ -6,10 +6,10 @@
     </div>
 
     <div v-if="!challenged" class="mb-6">
-      <AppSelect v-model="selectedOpponent" :options="opponentOptions" placeholder="Select opponent" label="Opponent" />
-      <AppButton class="mt-4" :disabled="!selectedOpponent" @click="challenge">
+      <CommonAppSelect v-model="selectedOpponent" :options="opponentOptions" placeholder="Select opponent" label="Opponent" />
+      <CommonAppButton class="mt-4" :disabled="!selectedOpponent" @click="challenge">
         Challenge!
-      </AppButton>
+      </CommonAppButton>
     </div>
     <div v-else class="mb-6 text-sm text-amber-600 dark:text-amber-400">
       Challenge sent! Waiting for result...
@@ -23,9 +23,9 @@
         <p class="text-lg font-bold">{{ battleResult.winnerName }} Wins!</p>
         <p class="mt-1 text-sm text-gray-500">{{ battleResult.loserName }} loses</p>
       </div>
-      <AppButton variant="secondary" @click="resetBattle">
+      <CommonAppButton variant="secondary" @click="resetBattle">
         Challenge Again
-      </AppButton>
+      </CommonAppButton>
     </div>
   </div>
 </template>

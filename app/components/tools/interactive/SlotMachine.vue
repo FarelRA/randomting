@@ -1,11 +1,11 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
-      <AppButton :disabled="spinning" @click="spin">
+      <CommonAppButton :disabled="spinning" @click="spin">
         {{ spinning ? 'Spinning...' : 'Spin!' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
   <div class="mt-6 flex justify-center gap-2">
     <div v-for="(reel, i) in reels" :key="i" :ref="el => reelRefs[i] = el as HTMLElement" class="flex h-28 w-24 items-center justify-center overflow-hidden rounded-xl border-2 bg-gray-50 text-5xl shadow-inner dark:border-gray-600 dark:bg-gray-800">
@@ -13,12 +13,12 @@
     </div>
   </div>
 
-  <ResultDisplay :visible="!!resultText" :copy-text="resultText || undefined" :show-confetti="isWin" class="mt-6">
+  <ToolsResultDisplay :visible="!!resultText" :copy-text="resultText || undefined" :show-confetti="isWin" class="mt-6">
     <p v-if="isWin" class="text-center text-2xl font-bold text-yellow-500">You Win!</p>
     <p v-else-if="resultText" class="text-center text-lg text-gray-500 dark:text-gray-400">{{ resultText }}</p>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="slot-machine" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="slot-machine" />
 </template>
 
 <script setup lang="ts">

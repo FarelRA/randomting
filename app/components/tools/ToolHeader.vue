@@ -11,7 +11,7 @@
         <h1 class="text-3xl font-bold">{{ name }}</h1>
         <p class="mt-1 text-gray-600 dark:text-gray-400">{{ description }}</p>
       </div>
-      <ShareButton :title="name" :text="description" />
+      <CommonShareButton :title="name" :text="description" />
     </div>
   </div>
 </template>

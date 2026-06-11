@@ -11,7 +11,7 @@
     </div>
 
     <div v-if="loading" class="space-y-4">
-      <LoadingSkeleton v-for="i in 5" :key="i" lines="1" :widths="['100%']" />
+      <CommonLoadingSkeleton v-for="i in 5" :key="i" lines="1" :widths="['100%']" />
     </div>
 
     <div v-else-if="users.length === 0" class="rounded-xl border border-gray-200 bg-white p-12 text-center dark:border-gray-800 dark:bg-gray-900">

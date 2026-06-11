@@ -1,17 +1,17 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div>
         <label class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Participants (one per line)</label>
         <textarea v-model="namesText" rows="6" class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100" placeholder="Player 1&#10;Player 2&#10;Player 3&#10;Player 4" />
       </div>
-      <AppButton :disabled="names.length < 2" @click="generate">
+      <CommonAppButton :disabled="names.length < 2" @click="generate">
         Generate Bracket
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :show-confetti="true" class="mt-6">
     <div class="space-y-6">
       <div v-for="(round, ri) in result" :key="ri">
         <h4 class="mb-3 font-semibold text-gray-500 dark:text-gray-400">Round {{ ri + 1 }}</h4>
@@ -24,9 +24,9 @@
         </div>
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="tournament-seeding" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="tournament-seeding" />
 </template>
 
 <script setup lang="ts">

@@ -1,5 +1,5 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
         <div>
@@ -11,13 +11,13 @@
           <textarea v-model="list2Text" rows="6" class="block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100" placeholder="Leave empty to pair within List 1" />
         </div>
       </div>
-      <AppButton :disabled="list1.length === 0" @click="pair">
+      <CommonAppButton :disabled="list1.length === 0" @click="pair">
         {{ list2.length > 0 ? 'Pair from Both Lists' : 'Pair Within List' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :show-confetti="true" class="mt-6">
     <div class="space-y-3">
       <div v-for="(pair, i) in result" :key="i" class="flex items-center gap-3 rounded-lg bg-gray-50 px-4 py-3 dark:bg-gray-800/50">
         <span class="font-semibold text-primary-600 dark:text-primary-400">{{ pair[0] }}</span>
@@ -27,9 +27,9 @@
         <span class="font-semibold text-primary-600 dark:text-primary-400">{{ pair[1] }}</span>
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="random-pairing" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="random-pairing" />
 </template>
 
 <script setup lang="ts">

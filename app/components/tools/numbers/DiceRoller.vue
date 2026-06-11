@@ -1,17 +1,17 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppInput v-model.number="diceCount" label="Number of Dice" type="number" :min="1" :max="100" hint="1-100" />
-        <AppSelect v-model="sides" label="Sides per Die" :options="sideOptions" />
+        <CommonAppInput v-model.number="diceCount" label="Number of Dice" type="number" :min="1" :max="100" hint="1-100" />
+        <CommonAppSelect v-model="sides" label="Sides per Die" :options="sideOptions" />
       </div>
-      <AppButton @click="roll">
+      <CommonAppButton @click="roll">
         Roll {{ diceCount }}d{{ sides }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result?.rolls.join(', ')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result?.rolls.join(', ')" :show-confetti="true" class="mt-6">
     <div class="space-y-3">
       <div class="flex flex-wrap gap-2">
         <span v-for="(roll, i) in result?.rolls" :key="i" :ref="el => setDieRef(el as HTMLElement, i)" class="die inline-flex h-10 w-10 items-center justify-center rounded-lg border-2 border-primary-200 bg-primary-50 text-lg font-bold text-primary-700 dark:border-primary-800 dark:bg-primary-950 dark:text-primary-300">
@@ -22,9 +22,9 @@
         Total: <span class="font-bold text-primary-600 dark:text-primary-400">{{ result?.total }}</span>
       </p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="dice-roller" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="dice-roller" />
 </template>
 
 <script setup lang="ts">

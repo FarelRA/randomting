@@ -4,8 +4,8 @@
     :aria-label="colorMode.value === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'"
     @click="toggle"
   >
-    <IconSun v-if="colorMode.value === 'dark'" class="h-5 w-5" />
-    <IconMoon v-else class="h-5 w-5" />
+    <CommonIconSun v-if="colorMode.value === 'dark'" class="h-5 w-5" />
+    <CommonIconMoon v-else class="h-5 w-5" />
   </button>
 </template>
 

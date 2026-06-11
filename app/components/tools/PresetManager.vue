@@ -1,24 +1,24 @@
 <template>
   <div class="mt-6">
-    <AppButton variant="secondary" size="sm" @click="showModal = true">
+    <CommonAppButton variant="secondary" size="sm" @click="showModal = true">
       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 5v14" />
         <path d="M5 12h14" />
       </svg>
       Save Preset
-    </AppButton>
+    </CommonAppButton>
 
-    <AppModal :open="showModal" title="Save Preset" @close="showModal = false">
+    <CommonAppModal :open="showModal" title="Save Preset" @close="showModal = false">
       <div class="space-y-4">
         <p class="text-sm text-gray-600 dark:text-gray-400">Save the current configuration so you can load it later.</p>
-        <AppInput v-model="presetName" label="Preset Name" placeholder="e.g. D&D Dice Set" />
+        <CommonAppInput v-model="presetName" label="Preset Name" placeholder="e.g. D&D Dice Set" />
         <p v-if="saveError" class="text-sm text-red-500">{{ saveError }}</p>
         <div class="flex justify-end gap-2">
-          <AppButton variant="secondary" @click="showModal = false">Cancel</AppButton>
-          <AppButton :disabled="!presetName.trim()" @click="save">Save</AppButton>
+          <CommonAppButton variant="secondary" @click="showModal = false">Cancel</CommonAppButton>
+          <CommonAppButton :disabled="!presetName.trim()" @click="save">Save</CommonAppButton>
         </div>
       </div>
-    </AppModal>
+    </CommonAppModal>
   </div>
 </template>
 

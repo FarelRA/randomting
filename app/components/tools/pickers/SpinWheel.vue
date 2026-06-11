@@ -1,5 +1,5 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div>
         <label class="mb-1 block text-sm font-medium text-gray-700 dark:text-gray-300">Segments (one per line)</label>
@@ -9,18 +9,18 @@
         <canvas ref="canvasRef" :width="canvasSize" :height="canvasSize" class="rounded-full shadow-lg" />
       </div>
       <div class="text-center">
-        <AppButton :disabled="segments.length < 2" @click="spin">
+        <CommonAppButton :disabled="segments.length < 2" @click="spin">
           {{ spinning ? 'Spinning...' : 'Spin!' }}
-        </AppButton>
+        </CommonAppButton>
       </div>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!winner" :copy-text="winner" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!winner" :copy-text="winner" :show-confetti="true" class="mt-6">
     <p class="text-center text-2xl font-bold text-primary-600 dark:text-primary-400">{{ winner }}</p>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="spin-wheel" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="spin-wheel" />
 </template>
 
 <script setup lang="ts">

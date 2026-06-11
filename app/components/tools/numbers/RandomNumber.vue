@@ -1,32 +1,32 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppInput v-model.number="min" label="Min" type="number" :min="-999999" :max="max" />
-        <AppInput v-model.number="max" label="Max" type="number" :min="min" />
+        <CommonAppInput v-model.number="min" label="Min" type="number" :min="-999999" :max="max" />
+        <CommonAppInput v-model.number="max" label="Max" type="number" :min="min" />
       </div>
       <div class="grid gap-4 sm:grid-cols-2">
         <div class="flex items-center gap-2">
           <input id="allowDecimals" v-model="decimals" type="checkbox" class="rounded border-gray-300 text-primary-600 focus:ring-primary-500 dark:border-gray-600">
           <label for="allowDecimals" class="text-sm text-gray-700 dark:text-gray-300">Allow decimals</label>
         </div>
-        <AppInput v-model.number="count" label="Count" type="number" :min="1" :max="1000" hint="1-1000" />
+        <CommonAppInput v-model.number="count" label="Count" type="number" :min="1" :max="1000" hint="1-1000" />
       </div>
-      <AppButton @click="generate">
+      <CommonAppButton @click="generate">
         Generate{{ count > 1 ? ' ' + count + ' Numbers' : '' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
     <div class="space-y-1">
       <p v-for="(num, i) in result" :key="i" class="text-2xl font-bold tracking-tight text-primary-600 dark:text-primary-400">
         {{ num }}
       </p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="random-number" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="random-number" />
 </template>
 
 <script setup lang="ts">

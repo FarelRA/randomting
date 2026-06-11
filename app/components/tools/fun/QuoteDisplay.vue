@@ -1,24 +1,24 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
-      <AppButton :disabled="loading" @click="fetchQuote">
+      <CommonAppButton :disabled="loading" @click="fetchQuote">
         {{ loading ? 'Loading...' : 'Show Me a Quote' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
   <p v-if="error" class="mt-4 text-sm text-red-500">{{ error }}</p>
 
-  <ResultDisplay :visible="!!quote" :copy-text="quote ? `${quote.content} — ${quote.author}` : undefined" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!quote" :copy-text="quote ? `${quote.content} — ${quote.author}` : undefined" :show-confetti="true" class="mt-6">
     <div class="space-y-3">
       <blockquote class="border-l-4 border-primary-500 pl-4 text-lg italic leading-relaxed text-gray-700 dark:text-gray-300">
         &ldquo;{{ quote?.content }}&rdquo;
       </blockquote>
       <p class="text-right text-sm font-semibold text-gray-600 dark:text-gray-400">&mdash; {{ quote?.author }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="random-quote" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="random-quote" />
 </template>
 
 <script setup lang="ts">

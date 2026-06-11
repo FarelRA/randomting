@@ -7,8 +7,8 @@
             <slot />
           </div>
           <div class="flex shrink-0 gap-1">
-            <CopyButton v-if="copyText" :text="copyText" />
-            <AppButton v-if="showConfetti" variant="ghost" size="sm" aria-label="Celebrate" @click="$emit('celebrate')">
+            <CommonCopyButton v-if="copyText" :text="copyText" />
+            <CommonAppButton v-if="showConfetti" variant="ghost" size="sm" aria-label="Celebrate" @click="$emit('celebrate')">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M20.2 15.1l-3.2 3.2a1 1 0 01-1.4-1.4l3.2-3.2" />
                 <path d="M6.8 4.8l-3.2 3.2a1 1 0 001.4 1.4l3.2-3.2" />
@@ -19,7 +19,7 @@
                 <path d="M2 12h4" />
                 <path d="M18 12h4" />
               </svg>
-            </AppButton>
+            </CommonAppButton>
           </div>
         </div>
       </div>

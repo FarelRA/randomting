@@ -34,12 +34,12 @@
         </nav>
 
         <div class="flex items-center gap-3">
-          <AppButton variant="ghost" size="sm" aria-label="Toggle theme">
-            <ThemeToggle />
-          </AppButton>
-          <AppButton variant="primary" size="sm" class="hidden md:inline-flex" to="/tools">
+          <CommonAppButton variant="ghost" size="sm" aria-label="Toggle theme">
+            <CommonThemeToggle />
+          </CommonAppButton>
+          <CommonAppButton variant="primary" size="sm" class="hidden md:inline-flex" to="/tools">
             Get Started
-          </AppButton>
+          </CommonAppButton>
           <button class="inline-flex items-center justify-center rounded-md p-2 text-gray-600 hover:text-gray-900 md:hidden dark:text-gray-400 dark:hover:text-gray-100" aria-label="Toggle mobile menu">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -74,8 +74,8 @@
       </div>
     </footer>
 
-    <AppToast />
-    <ConnectionStatus />
+    <CommonAppToast />
+    <CommonConnectionStatus />
   </div>
 </template>
 

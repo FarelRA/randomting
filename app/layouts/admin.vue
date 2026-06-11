@@ -19,7 +19,7 @@
 
     <div class="ml-64 flex flex-1 flex-col">
       <header class="sticky top-0 z-30 flex h-16 items-center justify-end gap-4 border-b border-gray-200 bg-white/80 px-8 backdrop-blur-md dark:border-gray-800 dark:bg-gray-950/80">
-        <ThemeToggle />
+        <CommonThemeToggle />
         <NuxtLink to="/profile" class="flex h-8 w-8 items-center justify-center rounded-full bg-primary-100 text-sm font-medium text-primary-700 dark:bg-primary-900 dark:text-primary-300">
           A
         </NuxtLink>
@@ -35,11 +35,11 @@
 const route = useRoute()
 
 const navItems = [
-  { to: '/admin', label: 'Dashboard', icon: resolveComponent('IconDashboard') },
-  { to: '/admin/jokes', label: 'Jokes', icon: resolveComponent('IconSmile') },
-  { to: '/admin/facts', label: 'Facts', icon: resolveComponent('IconInfo') },
-  { to: '/admin/quotes', label: 'Quotes', icon: resolveComponent('IconQuote') },
-  { to: '/admin/users', label: 'Users', icon: resolveComponent('IconUsers') },
+  { to: '/admin', label: 'Dashboard', icon: resolveComponent('CommonIconDashboard') },
+  { to: '/admin/jokes', label: 'Jokes', icon: resolveComponent('CommonIconSmile') },
+  { to: '/admin/facts', label: 'Facts', icon: resolveComponent('CommonIconInfo') },
+  { to: '/admin/quotes', label: 'Quotes', icon: resolveComponent('CommonIconQuote') },
+  { to: '/admin/users', label: 'Users', icon: resolveComponent('CommonIconUsers') },
 ]
 
 function isActive(to: string) {

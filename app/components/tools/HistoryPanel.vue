@@ -1,18 +1,18 @@
 <template>
-  <AppCard v-if="items.length > 0" class="mt-6">
+  <CommonAppCard v-if="items.length > 0" class="mt-6">
     <div class="mb-3 flex items-center justify-between">
       <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-500 dark:text-gray-400">History</h3>
-      <AppButton variant="ghost" size="sm" @click="clear">
+      <CommonAppButton variant="ghost" size="sm" @click="clear">
         Clear
-      </AppButton>
+      </CommonAppButton>
     </div>
     <div class="space-y-2">
       <div v-for="(item, i) in items.slice().reverse()" :key="i" class="flex items-center justify-between gap-2 rounded-lg bg-gray-50 px-3 py-2 text-sm dark:bg-gray-800/50">
         <span class="truncate font-mono">{{ item }}</span>
-        <CopyButton :text="item" />
+        <CommonCopyButton :text="item" />
       </div>
     </div>
-  </AppCard>
+  </CommonAppCard>
 </template>
 
 <script setup lang="ts">

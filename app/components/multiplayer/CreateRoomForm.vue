@@ -1,19 +1,19 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <form class="space-y-6" @submit.prevent="handleCreate">
-      <AppInput v-model="roomName" label="Room Name" placeholder="Enter a name for your room" :error="nameError" />
+      <CommonAppInput v-model="roomName" label="Room Name" placeholder="Enter a name for your room" :error="nameError" />
 
-      <AppSelect v-model="selectedTool" label="Game / Tool" placeholder="Select a tool" :options="toolOptions" />
+      <CommonAppSelect v-model="selectedTool" label="Game / Tool" placeholder="Select a tool" :options="toolOptions" />
 
-      <AppInput v-model.number="maxPlayers" label="Max Players" type="number" :min="2" :max="20" />
+      <CommonAppInput v-model.number="maxPlayers" label="Max Players" type="number" :min="2" :max="20" />
 
       <p v-if="createError" class="text-sm text-red-500">{{ createError }}</p>
 
-      <AppButton type="submit" class="w-full" :disabled="!canSubmit || creating">
+      <CommonAppButton type="submit" class="w-full" :disabled="!canSubmit || creating">
         {{ creating ? 'Creating...' : 'Create Room' }}
-      </AppButton>
+      </CommonAppButton>
     </form>
-  </AppCard>
+  </CommonAppCard>
 </template>
 
 <script setup lang="ts">

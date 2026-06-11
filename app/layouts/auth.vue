@@ -6,9 +6,9 @@
           <span class="bg-gradient-to-r from-primary-500 to-violet-500 bg-clip-text text-transparent">randomting</span>
         </NuxtLink>
       </div>
-      <AppCard class="p-8">
+      <CommonAppCard class="p-8">
         <slot />
-      </AppCard>
+      </CommonAppCard>
       <p class="mt-4 text-center text-sm text-gray-500 dark:text-gray-400">
         <NuxtLink to="/" class="hover:text-primary-600 transition-colors">&larr; Back to home</NuxtLink>
       </p>

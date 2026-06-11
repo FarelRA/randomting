@@ -25,9 +25,9 @@
         class="flex-1 rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
         maxlength="500"
       />
-      <AppButton type="submit" size="sm" :disabled="!input.trim()">
+      <CommonAppButton type="submit" size="sm" :disabled="!input.trim()">
         Send
-      </AppButton>
+      </CommonAppButton>
     </form>
   </div>
 </template>

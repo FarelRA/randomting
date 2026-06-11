@@ -1,23 +1,23 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppSelect v-model="mode" label="Generate" :options="modeOptions" />
-        <AppInput v-model.number="count" label="Count" type="number" :min="1" :max="100" :hint="mode === 'paragraphs' ? '1-100' : '1-1000'" />
+        <CommonAppSelect v-model="mode" label="Generate" :options="modeOptions" />
+        <CommonAppInput v-model.number="count" label="Count" type="number" :min="1" :max="100" :hint="mode === 'paragraphs' ? '1-100' : '1-1000'" />
       </div>
-      <AppButton @click="generate">
+      <CommonAppButton @click="generate">
         Generate {{ mode === 'paragraphs' ? count + ' Paragraph' : mode === 'sentences' ? count + ' Sentence' : count + ' Word' }}{{ count > 1 ? 's' : '' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!result" :copy-text="result" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result" :copy-text="result" :show-confetti="true" class="mt-6">
     <div class="prose prose-sm max-w-none dark:prose-invert">
       <p v-for="(p, i) in result?.split('\n\n')" :key="i" class="text-gray-700 dark:text-gray-300">{{ p }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="lorem-ipsum" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="lorem-ipsum" />
 </template>
 
 <script setup lang="ts">

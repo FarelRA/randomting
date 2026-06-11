@@ -1,20 +1,20 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
-      <AppInput v-model="inputText" label="Input Text" placeholder="Type anything to generate an avatar" />
-      <AppButton :disabled="!inputText.trim()" @click="generate">
+      <CommonAppInput v-model="inputText" label="Input Text" placeholder="Type anything to generate an avatar" />
+      <CommonAppButton :disabled="!inputText.trim()" @click="generate">
         Generate Identicon
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay :visible="!!generated" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!generated" :show-confetti="true" class="mt-6">
     <div class="flex flex-col items-center gap-4">
       <canvas ref="canvasRef" :width="size" :height="size" class="rounded-xl border dark:border-gray-600" />
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="identicon" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="identicon" />
 </template>
 
 <script setup lang="ts">

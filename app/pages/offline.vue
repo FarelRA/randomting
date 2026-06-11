@@ -15,8 +15,8 @@
       Connect to the internet to access everything.
     </p>
     <div class="mt-8 flex gap-4">
-      <AppButton @click="refresh">Try Again</AppButton>
-      <AppButton variant="secondary" to="/">Go Home</AppButton>
+      <CommonAppButton @click="refresh">Try Again</CommonAppButton>
+      <CommonAppButton variant="secondary" to="/">Go Home</CommonAppButton>
     </div>
   </div>
 </template>

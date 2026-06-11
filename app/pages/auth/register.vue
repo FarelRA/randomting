@@ -6,12 +6,12 @@
     <p v-if="error" class="mb-4 rounded-lg bg-red-50 p-3 text-sm text-red-600 dark:bg-red-950 dark:text-red-400">{{ error }}</p>
 
     <form class="space-y-4" @submit.prevent="handleRegister">
-      <AppInput v-model="username" label="Username" placeholder="cooluser123" />
-      <AppInput v-model="email" label="Email" type="email" placeholder="your@email.com" />
-      <AppInput v-model="password" label="Password" type="password" placeholder="********" hint="At least 6 characters" />
-      <AppButton type="submit" class="w-full" :disabled="submitting || !username || !email || !password">
+      <CommonAppInput v-model="username" label="Username" placeholder="cooluser123" />
+      <CommonAppInput v-model="email" label="Email" type="email" placeholder="your@email.com" />
+      <CommonAppInput v-model="password" label="Password" type="password" placeholder="********" hint="At least 6 characters" />
+      <CommonAppButton type="submit" class="w-full" :disabled="submitting || !username || !email || !password">
         {{ submitting ? 'Creating account...' : 'Create Account' }}
-      </AppButton>
+      </CommonAppButton>
     </form>
 
     <p class="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">

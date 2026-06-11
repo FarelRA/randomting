@@ -1,25 +1,25 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div class="grid gap-4 sm:grid-cols-2">
-        <AppSelect v-model="category" label="Category" :options="categoryOptions" />
+        <CommonAppSelect v-model="category" label="Category" :options="categoryOptions" />
       </div>
-      <AppButton :disabled="loading" @click="fetchJoke">
+      <CommonAppButton :disabled="loading" @click="fetchJoke">
         {{ loading ? 'Loading...' : 'Tell Me a Joke' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
   <p v-if="error" class="mt-4 text-sm text-red-500">{{ error }}</p>
 
-  <ResultDisplay :visible="!!joke" :copy-text="joke?.content" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!joke" :copy-text="joke?.content" :show-confetti="true" class="mt-6">
     <div class="space-y-2">
       <p class="text-lg leading-relaxed text-gray-800 dark:text-gray-200">{{ joke?.content }}</p>
       <p v-if="joke?.category" class="text-xs text-gray-400 dark:text-gray-500">Category: {{ joke.category }}</p>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="random-joke" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="random-joke" />
 </template>
 
 <script setup lang="ts">

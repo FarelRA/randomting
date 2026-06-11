@@ -1,17 +1,17 @@
 <template>
-  <AppCard>
+  <CommonAppCard>
     <div class="space-y-4">
       <div>
         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Custom words (one per line, 24 max)</label>
         <textarea v-model="customWords" rows="4" class="mt-1 block w-full rounded-lg border border-gray-300 bg-white px-3 py-2 text-sm shadow-sm focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100" placeholder="Leave empty for BINGO theme" />
       </div>
-      <AppButton @click="generateCard">
+      <CommonAppButton @click="generateCard">
         Generate Card{{ cardGenerated ? ' Again' : '' }}
-      </AppButton>
+      </CommonAppButton>
     </div>
-  </AppCard>
+  </CommonAppCard>
 
-  <ResultDisplay v-if="cardGenerated" :visible="cardGenerated" :copy-text="cardCopyText" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay v-if="cardGenerated" :visible="cardGenerated" :copy-text="cardCopyText" :show-confetti="true" class="mt-6">
     <div class="grid grid-cols-5 gap-1 sm:gap-2">
       <div v-for="(cell, i) in cardCells" :key="i"
            class="flex aspect-square items-center justify-center rounded-lg border text-center text-xs font-semibold sm:text-sm"
@@ -19,9 +19,9 @@
         {{ cell }}
       </div>
     </div>
-  </ResultDisplay>
+  </ToolsResultDisplay>
 
-  <HistoryPanel ref="historyRef" storage-key="bingo-card" />
+  <ToolsHistoryPanel ref="historyRef" storage-key="bingo-card" />
 </template>
 
 <script setup lang="ts">
