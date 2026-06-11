@@ -56,7 +56,7 @@ Randomting is a single-page PWA that bundles **24+ random tools** into one app �
 | Database | SQLite via `@libsql/client` & Drizzle ORM |
 | Auth | JWT (bcrypt + jsonwebtoken) |
 | Animations | GSAP 3.15 |
-| WebSocket | Socket.IO (port 3002) |
+| WebSocket | Socket.IO (port 3101, proxied through main port) |
 | PWA | `@vite-pwa/nuxt` with service worker + manifest |
 | Deployment | Docker (multi-stage, nginx reverse proxy) |
 
@@ -83,7 +83,7 @@ bun install
 bun run dev
 ```
 
-Opens at `http://localhost:3000`. WebSocket server runs on port 3002 by default (`NUXT_SOCKET_PORT` to change).
+Opens at `http://localhost:3100`. Socket.IO (port 3101) is proxied through the same port in dev.
 
 ### Build for Production
 
@@ -105,8 +105,8 @@ node .output/server/index.mjs
 docker compose up --build
 ```
 
-- `:3000` — Nuxt app (via nginx reverse proxy)
-- `:3002` — WebSocket (proxied at `/socket.io/`)
+- `:3100` — Nuxt app (via nginx reverse proxy)
+- `:3101` — WebSocket (proxied at `/socket.io/`)
 - Persistent SQLite volume (`randomting-data`)
 
 See `Dockerfile`, `docker-compose.yml`, and `docker/nginx.conf`.
@@ -175,7 +175,7 @@ See `Dockerfile`, `docker-compose.yml`, and `docker/nginx.conf`.
 
 | Env Var | Default | Description |
 |---|---|---|
-| `NUXT_SOCKET_PORT` | `3002` | WebSocket server port |
+
 | `JWT_SECRET` | *(random)* | JWT signing secret |
 | `VAPID_PUBLIC_KEY` | *(dev key)* | VAPID public key |
 | `VAPID_PRIVATE_KEY` | *(dev key)* | VAPID private key |

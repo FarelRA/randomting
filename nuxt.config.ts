@@ -1,6 +1,11 @@
 export default defineNuxtConfig({
   compatibilityDate: '2026-06-11',
 
+  devServer: {
+    port: 3100,
+    host: '0.0.0.0',
+  },
+
   css: ['~/assets/css/main.css'],
 
   modules: [
@@ -9,17 +14,21 @@ export default defineNuxtConfig({
     '@vite-pwa/nuxt',
   ],
 
-  runtimeConfig: {
-    socketPort: process.env.NUXT_SOCKET_PORT || '3002',
-    public: {
-      socketUrl: process.env.NUXT_PUBLIC_SOCKET_URL || '',
-    },
-  },
-
   colorMode: {
     classSuffix: '',
     preference: 'system',
     fallback: 'dark',
+  },
+
+  vite: {
+    server: {
+      proxy: {
+        '/socket.io': {
+          target: 'http://localhost:3101',
+          ws: true,
+        },
+      },
+    },
   },
 
   postcss: {

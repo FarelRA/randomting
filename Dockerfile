@@ -19,12 +19,12 @@ COPY --from=builder /app/package.json /app/package.json
 RUN mkdir -p /app/data && chown -R nuxt:nodejs /app/data
 
 USER nuxt
-EXPOSE 3000
-EXPOSE 3002
+EXPOSE 3100
+EXPOSE 3101
 
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
-ENV PORT=3000
-ENV NUXT_SOCKET_PORT=3002
+ENV PORT=3100
+ENV SOCKET_PORT=3101
 
 CMD ["node", ".output/server/index.mjs"]

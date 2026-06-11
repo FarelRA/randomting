@@ -27,7 +27,7 @@ interface RoomState {
 
 const rooms = new Map<string, RoomState>()
 
-const PORT = parseInt(process.env.NUXT_SOCKET_PORT || '3002')
+const PORT = 3101
 const httpServer = createServer()
 const io = new Server(httpServer, {
   cors: {

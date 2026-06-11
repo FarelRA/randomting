@@ -10,11 +10,9 @@ export function useWebSocket() {
   function connect() {
     if (socket?.connected) return
 
-    const url = import.meta.dev ? 'http://localhost:3002' : undefined
-
     status.value = 'connecting'
 
-    socket = io(url, {
+    socket = io(undefined, {
       autoConnect: true,
       transports: ['websocket', 'polling'],
       reconnection: true,
