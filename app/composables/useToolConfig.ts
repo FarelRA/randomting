@@ -2,6 +2,7 @@ export function useToolConfig(config: Record<string, Ref<any>>, prefix?: string)
   const route = useRoute()
   const router = useRouter()
   let timeout: ReturnType<typeof setTimeout> | null = null
+  let firstSync = true
 
   function init() {
     for (const [key, ref] of Object.entries(config)) {
@@ -28,15 +29,16 @@ export function useToolConfig(config: Record<string, Ref<any>>, prefix?: string)
   }
 
   function debouncedSync() {
+    if (firstSync) { firstSync = false; return }
     if (timeout) clearTimeout(timeout)
     timeout = setTimeout(syncToUrl, 500)
   }
 
+  init()
+
   for (const [, ref] of Object.entries(config)) {
     watch(ref, debouncedSync, { deep: true })
   }
-
-  onMounted(init)
 
   onUnmounted(() => {
     if (timeout) clearTimeout(timeout)

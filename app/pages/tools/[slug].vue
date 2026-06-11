@@ -9,6 +9,10 @@
   </div>
 </template>
 
+<script lang="ts">
+const asyncCache: Record<string, any> = {}
+</script>
+
 <script setup lang="ts">
 const route = useRoute()
 const slug = computed(() => route.params.slug as string)
@@ -16,7 +20,11 @@ const slug = computed(() => route.params.slug as string)
 const tool = computed(() => findTool(slug.value))
 
 const toolComp = computed(() => {
-  if (!toolRegistry[slug.value]) return undefined
-  return defineAsyncComponent(toolRegistry[slug.value])
+  const s = slug.value
+  if (!toolRegistry[s]) return undefined
+  if (!asyncCache[s]) {
+    asyncCache[s] = defineAsyncComponent(toolRegistry[s])
+  }
+  return asyncCache[s]
 })
 </script>
