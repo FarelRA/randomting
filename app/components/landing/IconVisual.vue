@@ -1,0 +1,7 @@
+<template>
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="13.5" cy="6.5" r="3.5" fill="currentColor" />
+    <circle cx="6.5" cy="17.5" r="3.5" fill="currentColor" />
+    <circle cx="19.5" cy="17.5" r="3.5" fill="currentColor" />
+  </svg>
+</template>
