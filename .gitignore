@@ -3,6 +3,8 @@ node_modules
 .output
 .env
 *.local
-data
+data/*.db
+data/*.db-wal
+data/*.db-shm
 .DS_Store
 *.log
