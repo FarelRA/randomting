@@ -1,6 +1,82 @@
 import { db, schema } from '../utils/db'
-import { count, eq } from 'drizzle-orm'
+import { count, eq, sql } from 'drizzle-orm'
 import { hashPassword } from '../utils/auth'
+
+async function createTables() {
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS users (
+      id text primary key,
+      email text unique not null,
+      username text not null,
+      password_hash text not null,
+      role text default 'user' not null,
+      created_at integer not null
+    )
+  `)
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS presets (
+      id text primary key,
+      user_id text references users(id) not null,
+      tool_slug text not null,
+      name text not null,
+      config text not null,
+      created_at integer not null
+    )
+  `)
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS history (
+      id text primary key,
+      user_id text references users(id),
+      tool_slug text not null,
+      input text not null,
+      result text not null,
+      created_at integer not null
+    )
+  `)
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS jokes (
+      id text primary key,
+      content text not null,
+      category text default 'general',
+      source text,
+      active integer default 1 not null,
+      created_at integer not null
+    )
+  `)
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS facts (
+      id text primary key,
+      content text not null,
+      category text default 'general',
+      source text,
+      active integer default 1 not null,
+      created_at integer not null
+    )
+  `)
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS quotes (
+      id text primary key,
+      content text not null,
+      author text not null,
+      category text default 'general',
+      source text,
+      active integer default 1 not null,
+      created_at integer not null
+    )
+  `)
+  await db.run(sql`
+    CREATE TABLE IF NOT EXISTS rooms (
+      id text primary key,
+      host_id text references users(id) not null,
+      name text not null,
+      tool text not null,
+      config text not null,
+      status text default 'waiting' not null,
+      max_players integer default 10 not null,
+      created_at integer not null
+    )
+  `)
+}
 
 async function seedTable(table: any, data: Record<string, any>[]) {
   const [row] = await db.select({ count: count() }).from(table)
@@ -31,6 +107,7 @@ async function seedAdmin() {
 }
 
 export default defineNitroPlugin(async () => {
+  await createTables()
   await seedAdmin()
   await seedTable(schema.jokes, [
     { content: 'Why do programmers prefer dark mode? Because light attracts bugs.', category: 'programming' },
