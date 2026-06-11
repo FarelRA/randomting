@@ -34,9 +34,7 @@
         </nav>
 
         <div class="flex items-center gap-3">
-          <CommonAppButton variant="ghost" size="sm" aria-label="Toggle theme">
-            <CommonThemeToggle />
-          </CommonAppButton>
+          <CommonThemeToggle />
           <CommonAppButton variant="primary" size="sm" class="hidden md:inline-flex" to="/tools">
             Get Started
           </CommonAppButton>
