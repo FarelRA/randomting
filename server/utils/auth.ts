@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import type { H3Event } from 'h3'
 
 const JWT_SECRET = process.env.JWT_SECRET || 'randomting-secret-change-in-production'

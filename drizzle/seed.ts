@@ -1,7 +1,7 @@
 import { createClient } from '@libsql/client'
 import { drizzle } from 'drizzle-orm/libsql'
 import { eq } from 'drizzle-orm'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 import * as schema from './schema'
 
 const client = createClient({
