@@ -27,13 +27,17 @@ interface RoomState {
 
 const rooms = new Map<string, RoomState>()
 
-const PORT = 3101
+const PORT = Number(process.env.SOCKET_PORT || 3101)
 const httpServer = createServer()
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.NUXT_PUBLIC_SOCKET_URL || '*',
     credentials: true,
   },
+})
+
+httpServer.on('error', (err) => {
+  console.error(`[socket] failed to start on port ${PORT}:`, err.message)
 })
 
 httpServer.listen(PORT)

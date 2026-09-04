@@ -30,7 +30,7 @@
 <script setup lang="ts">
 defineProps<{
   visible: boolean
-  copyText?: string
+  copyText?: string | null
   showConfetti?: boolean
   borderClass?: string
 }>()

@@ -1,5 +1,5 @@
 import { db, schema } from '../../utils/db'
-import { hashPassword, signToken } from '../../utils/auth'
+import { hashPassword, signToken, isAdminEmail } from '../../utils/auth'
 import { eq } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
@@ -19,17 +19,18 @@ export default defineEventHandler(async (event) => {
   const now = Math.floor(Date.now() / 1000)
   const passwordHash = await hashPassword(body.password)
   const id = crypto.randomUUID()
+  const role = isAdminEmail(body.email) ? 'admin' : 'user'
 
   await db.insert(schema.users).values({
     id,
     username: body.username,
     email: body.email,
     passwordHash,
-    role: 'user',
+    role,
     createdAt: now,
   })
 
-  const token = signToken({ userId: id, role: 'user' })
+  const token = signToken({ userId: id, role })
   setCookie(event, 'token', token, {
     httpOnly: true,
     sameSite: 'lax',
@@ -37,5 +38,5 @@ export default defineEventHandler(async (event) => {
     maxAge: 60 * 60 * 24 * 7,
   })
 
-  return { id, username: body.username, email: body.email, role: 'user', createdAt: now }
+  return { id, username: body.username, email: body.email, role, createdAt: now }
 })

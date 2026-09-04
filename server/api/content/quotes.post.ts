@@ -1,6 +1,8 @@
 import { db, schema } from '../../utils/db'
+import { requireAdmin } from '../../utils/auth'
 
 export default defineEventHandler(async (event) => {
+  requireAdmin(event)
   const body = await readBody(event)
   if (!body.content) throw createError({ statusCode: 400, message: 'Content is required' })
   if (!body.author) throw createError({ statusCode: 400, message: 'Author is required' })

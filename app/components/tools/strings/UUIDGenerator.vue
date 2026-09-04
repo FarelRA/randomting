@@ -11,7 +11,7 @@
     </div>
   </CommonAppCard>
 
-  <ToolsResultDisplay :visible="result && result.length > 0" :copy-text="result?.join('\n')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result?.length" :copy-text="result?.join('\n')" :show-confetti="true" class="mt-6">
     <div class="space-y-1">
       <p v-for="(uuid, i) in result" :key="i" class="font-mono text-sm text-primary-600 dark:text-primary-400">{{ uuid }}</p>
     </div>
@@ -21,12 +21,13 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const version = ref('v4')
 const count = ref(1)
 const result = ref<string[] | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const { gen } = useSeededRandom()
 

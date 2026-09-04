@@ -19,12 +19,13 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const startTime = ref('09:00')
 const endTime = ref('17:00')
 const result = ref<string | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const { gen } = useSeededRandom()
 

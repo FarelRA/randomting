@@ -24,13 +24,14 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const rangeMin = ref(1)
 const rangeMax = ref(50)
 const pickCount = ref(6)
 const result = ref<number[] | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const { randomInt } = useSeededRandom()
 

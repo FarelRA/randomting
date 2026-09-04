@@ -30,6 +30,7 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const min = ref(1)
@@ -37,7 +38,7 @@ const max = ref(100)
 const decimals = ref(false)
 const count = ref(1)
 const result = ref<(number | string)[] | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const { gen } = useSeededRandom()
 

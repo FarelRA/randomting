@@ -24,6 +24,7 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 import { gsap } from 'gsap'
 
 const celebrate = inject('celebrate') as () => void
@@ -33,7 +34,7 @@ const spinning = ref(false)
 const winner = ref<string | null>(null)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
 const canvasSize = 300
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 let currentRotation = 0
 
 const { gen } = useSeededRandom()

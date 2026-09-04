@@ -11,7 +11,7 @@
     </div>
 
     <div v-if="loading" class="space-y-4">
-      <CommonLoadingSkeleton v-for="i in 5" :key="i" lines="1" :widths="['100%']" />
+      <CommonLoadingSkeleton v-for="i in 5" :key="i" :lines="1" :widths="['100%']" />
     </div>
 
     <div v-else-if="users.length === 0" class="rounded-xl border border-gray-200 bg-white p-12 text-center dark:border-gray-800 dark:bg-gray-900">
@@ -46,7 +46,8 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'admin' })
+import { ofetch } from 'ofetch'
+definePageMeta({ layout: 'admin', middleware: 'admin' })
 
 interface User {
   id: string
@@ -65,7 +66,7 @@ function formatDate(ts: number) {
 
 onMounted(async () => {
   try {
-    users.value = await $fetch('/api/users')
+    users.value = await ofetch('/api/users')
   } catch {
     users.value = []
   } finally {

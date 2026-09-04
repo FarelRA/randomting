@@ -18,12 +18,13 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const inputText = ref('')
 const generated = ref(false)
 const canvasRef = ref<HTMLCanvasElement | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 const size = 200
 const cellSize = size / 10
 

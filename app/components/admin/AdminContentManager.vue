@@ -12,7 +12,7 @@
     </div>
 
     <div v-if="loading" class="space-y-4">
-      <CommonLoadingSkeleton v-for="i in 5" :key="i" lines="1" :widths="['100%']" />
+      <CommonLoadingSkeleton v-for="i in 5" :key="i" :lines="1" :widths="['100%']" />
     </div>
 
     <div v-else-if="items.length === 0" class="rounded-xl border border-gray-200 bg-white p-12 text-center dark:border-gray-800 dark:bg-gray-900">
@@ -97,6 +97,8 @@
 </template>
 
 <script setup lang="ts">
+import { ofetch } from 'ofetch'
+
 const props = withDefaults(defineProps<{
   title: string
   description: string
@@ -136,7 +138,8 @@ function resetForm() {
 async function fetchItems() {
   loading.value = true
   try {
-    items.value = await $fetch(`${props.apiBase}/all`)
+    const url: string = `${props.apiBase}/all`
+    items.value = await ofetch(url)
   } catch {
     items.value = []
   } finally {

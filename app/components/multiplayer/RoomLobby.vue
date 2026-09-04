@@ -40,6 +40,7 @@ const iAmReady = computed(() => {
 })
 
 const allReady = computed(() => {
-  return props.players.length >= 1 && props.players.every(p => p.ready)
+  const guests = props.players.filter(p => p.id !== props.hostId)
+  return guests.every(p => p.ready)
 })
 </script>

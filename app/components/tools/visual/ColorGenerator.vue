@@ -11,7 +11,7 @@
     </div>
   </CommonAppCard>
 
-  <ToolsResultDisplay :visible="result && result.length > 0" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
+  <ToolsResultDisplay :visible="!!result?.length" :copy-text="result?.join(', ')" :show-confetti="true" class="mt-6">
     <div class="space-y-3">
       <div v-for="(color, i) in result" :key="i" class="flex items-center gap-3">
         <div class="h-10 w-10 shrink-0 rounded-lg border dark:border-gray-600" :style="{ backgroundColor: color.hex }" />
@@ -24,12 +24,13 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const format = ref('hex')
 const count = ref(5)
 const result = ref<{ hex: string; formatted: string }[] | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const { gen } = useSeededRandom()
 

@@ -22,27 +22,22 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const quote = ref<{ content: string; author: string } | null>(null)
 const loading = ref(false)
 const error = ref('')
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 async function fetchQuote() {
   loading.value = true
   error.value = ''
   try {
-    const { data, error: fetchErr } = await useFetch('/api/content/quotes')
-    if (fetchErr.value) {
-      error.value = 'Failed to load quote. Please try again.'
-      return
-    }
-    if (data.value) {
-      quote.value = data.value as { content: string; author: string }
-      historyRef.value?.add(`${quote.value.content} — ${quote.value.author}`)
-      celebrate()
-    }
+    const data = await $fetch<{ content: string; author: string }>('/api/content/quotes')
+    quote.value = data
+    historyRef.value?.add(`${quote.value.content} — ${quote.value.author}`)
+    celebrate()
   } catch {
     error.value = 'Failed to load quote. Please try again.'
   } finally {

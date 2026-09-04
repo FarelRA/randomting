@@ -38,8 +38,8 @@ const emit = defineEmits<{
   roll: [count: number, sides: number]
 }>()
 
-const diceCount = ref(2)
-const diceSides = ref(6)
+const diceCount = ref('2')
+const diceSides = ref('6')
 const rolling = ref(false)
 
 const allRolls = ref<Array<{ playerId: string; playerName: string; rolls: number[]; total: number }>>([])

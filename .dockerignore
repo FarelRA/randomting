@@ -1,8 +1,5 @@
+.git
+.github
 node_modules
 .nuxt
-.output
-.git
-.env
-*.local
-data
-.DS_Store
+.env*

@@ -47,7 +47,7 @@ function launch() {
       y: -20 - Math.random() * 100,
       vx: (Math.random() - 0.5) * 8,
       vy: Math.random() * 3 + 2,
-      color: colors[Math.floor(Math.random() * colors.length)],
+      color: colors[Math.floor(Math.random() * colors.length)] ?? '#6366f1',
       size: Math.random() * 8 + 4,
       rotation: Math.random() * 360,
       rotationSpeed: (Math.random() - 0.5) * 10,

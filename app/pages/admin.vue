@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({ layout: 'admin' })
+definePageMeta({ layout: 'admin', middleware: 'admin' })
 
 const adminCards = [
   { title: 'Jokes', description: 'Manage joke content', to: '/admin/jokes' },

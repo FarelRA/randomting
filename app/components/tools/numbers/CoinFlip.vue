@@ -34,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 import { gsap } from 'gsap'
 
 const celebrate = inject('celebrate') as () => void
@@ -42,7 +43,7 @@ const count = ref(1)
 const result = ref<{ heads: number; tails: number; coins: string[] } | null>(null)
 
 useToolConfig({ count })
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 const headsIconRef = ref<HTMLElement | null>(null)
 const tailsIconRef = ref<HTMLElement | null>(null)
 

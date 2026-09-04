@@ -33,5 +33,5 @@ defineEmits<{
   'update:modelValue': [value: string]
 }>()
 
-const selectId = `select-${Math.random().toString(36).slice(2, 9)}`
+const selectId = useId()
 </script>

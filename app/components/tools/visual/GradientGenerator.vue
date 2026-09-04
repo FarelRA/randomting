@@ -13,7 +13,7 @@
 
   <ToolsResultDisplay :visible="!!css" :copy-text="css" :show-confetti="true" class="mt-6">
     <div class="space-y-4">
-      <div class="h-32 rounded-xl" :style="{ background: css }" />
+      <div class="h-32 rounded-xl" :style="{ background: css || '' }" />
       <p class="font-mono text-xs text-gray-500 dark:text-gray-400">{{ css }}</p>
     </div>
   </ToolsResultDisplay>
@@ -22,12 +22,13 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const gradientType = ref('linear')
 const colorCount = ref('3')
 const css = ref<string | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const { gen } = useSeededRandom()
 

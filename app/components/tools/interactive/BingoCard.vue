@@ -25,12 +25,13 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const customWords = ref('')
 const cardCells = ref<string[]>([])
 const cardGenerated = ref(false)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const defaultWords = ['B', 'I', 'N', 'G', 'O']
 

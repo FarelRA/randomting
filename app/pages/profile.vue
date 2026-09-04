@@ -64,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import { ofetch } from 'ofetch'
 definePageMeta({ middleware: 'auth' })
 const auth = useAuthStore()
 
@@ -75,13 +76,13 @@ const loading = ref(true)
 
 async function loadPresets() {
   try {
-    presets.value = await $fetch('/api/presets')
+    presets.value = await ofetch('/api/presets')
   } catch {}
 }
 
 async function loadHistory() {
   try {
-    history.value = await $fetch('/api/history')
+    history.value = await ofetch('/api/history')
   } catch {}
 }
 

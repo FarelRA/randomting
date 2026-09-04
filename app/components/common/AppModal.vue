@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   open: boolean
   title?: string
 }>()

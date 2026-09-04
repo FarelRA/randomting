@@ -1,5 +1,5 @@
 import { db, schema } from '../../utils/db'
-import { comparePassword, signToken } from '../../utils/auth'
+import { comparePassword, signToken, isAdminEmail } from '../../utils/auth'
 import { eq } from 'drizzle-orm'
 
 export default defineEventHandler(async (event) => {
@@ -18,7 +18,12 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 401, message: 'Invalid email or password' })
   }
 
-  const token = signToken({ userId: user.id, role: user.role })
+  const role = isAdminEmail(user.email) ? 'admin' : user.role
+  if (role !== user.role) {
+    await db.update(schema.users).set({ role }).where(eq(schema.users.id, user.id))
+  }
+
+  const token = signToken({ userId: user.id, role })
   setCookie(event, 'token', token, {
     httpOnly: true,
     sameSite: 'lax',
@@ -26,5 +31,5 @@ export default defineEventHandler(async (event) => {
     maxAge: 60 * 60 * 24 * 7,
   })
 
-  return { id: user.id, username: user.username, email: user.email, role: user.role, createdAt: user.createdAt }
+  return { id: user.id, username: user.username, email: user.email, role, createdAt: user.createdAt }
 })

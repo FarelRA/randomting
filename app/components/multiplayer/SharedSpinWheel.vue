@@ -77,7 +77,7 @@ function drawWheel(highlightIndex?: number) {
     ctx.save()
     ctx.translate(radius + 10, radius + 10)
     ctx.rotate(textAngle)
-    ctx.fillText(segments[i].slice(0, 12), textRadius - 5, 4)
+    ctx.fillText(segments[i]?.slice(0, 12) ?? '', textRadius - 5, 4)
     ctx.restore()
   }
 

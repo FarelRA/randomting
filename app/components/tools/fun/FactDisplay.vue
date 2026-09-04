@@ -23,13 +23,14 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 const celebrate = inject('celebrate') as () => void
 
 const category = ref('all')
 const fact = ref<{ content: string; category?: string } | null>(null)
 const loading = ref(false)
 const error = ref('')
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 
 const categoryOptions = [
   { value: 'all', label: 'All Categories' },
@@ -44,16 +45,10 @@ async function fetchFact() {
   loading.value = true
   error.value = ''
   try {
-    const { data, error: fetchErr } = await useFetch(`/api/content/facts?category=${category.value}`)
-    if (fetchErr.value) {
-      error.value = 'Failed to load fact. Please try again.'
-      return
-    }
-    if (data.value) {
-      fact.value = data.value as { content: string; category?: string }
-      historyRef.value?.add(fact.value.content)
-      celebrate()
-    }
+    const data = await $fetch<{ content: string; category?: string }>(`/api/content/facts?category=${category.value}`)
+    fact.value = data
+    historyRef.value?.add(fact.value.content)
+    celebrate()
   } catch {
     error.value = 'Failed to load fact. Please try again.'
   } finally {

@@ -1,5 +1,10 @@
 import webPush from 'web-push'
 
+declare global {
+  var __pushSubscriptions: Map<string, any> | undefined
+  var __rooms: Map<string, any> | undefined
+}
+
 const vapidPublicKey = process.env.VAPID_PUBLIC_KEY
 const vapidPrivateKey = process.env.VAPID_PRIVATE_KEY
 const vapidEmail = process.env.VAPID_EMAIL

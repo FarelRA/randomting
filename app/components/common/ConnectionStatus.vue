@@ -1,5 +1,5 @@
 <template>
-  <div v-if="status !== 'connected'" class="fixed bottom-4 right-4 z-50">
+  <div v-if="isMultiplayerPage && status !== 'connected'" class="fixed bottom-4 right-4 z-50">
     <div
       class="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium shadow-lg backdrop-blur-sm"
       :class="indicatorClass"
@@ -11,7 +11,10 @@
 </template>
 
 <script setup lang="ts">
-const { status, connected } = useWebSocket()
+const route = useRoute()
+const { status } = useWebSocket()
+
+const isMultiplayerPage = computed(() => route.path.startsWith('/multiplayer'))
 
 const indicatorClass = computed(() => {
   if (status.value === 'connecting' || status.value === 'reconnecting') {

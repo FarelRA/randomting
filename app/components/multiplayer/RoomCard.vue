@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   room: {
     id: string
     name: string

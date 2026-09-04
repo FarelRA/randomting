@@ -113,6 +113,9 @@
 <script setup lang="ts">
 import { useWebSocket } from '~/composables/useWebSocket'
 import { useMultiplayer } from '~/composables/useMultiplayer'
+import MultiplayerDice from '~/components/multiplayer/MultiplayerDice.vue'
+import MultiplayerGroupLottery from '~/components/multiplayer/GroupLottery.vue'
+import MultiplayerRandomBattle from '~/components/multiplayer/RandomBattle.vue'
 
 const route = useRoute()
 const roomId = computed(() => route.params.id as string)
@@ -129,8 +132,8 @@ const spinning = ref(false)
 const lastSpinResult = ref<string | null>(null)
 
 const diceRef = ref<InstanceType<typeof MultiplayerDice> | null>(null)
-const lotteryRef = ref<InstanceType<typeof GroupLottery> | null>(null)
-const battleRef = ref<InstanceType<typeof RandomBattle> | null>(null)
+const lotteryRef = ref<InstanceType<typeof MultiplayerGroupLottery> | null>(null)
+const battleRef = ref<InstanceType<typeof MultiplayerRandomBattle> | null>(null)
 
 const toolLabels: Record<string, string> = {
   'spin-wheel': 'Shared Spin Wheel',

@@ -22,6 +22,7 @@
 </template>
 
 <script setup lang="ts">
+import ToolsHistoryPanel from '~/components/tools/HistoryPanel.vue'
 import { gsap } from 'gsap'
 
 const celebrate = inject('celebrate') as () => void
@@ -31,10 +32,10 @@ const reels = ref(['🍒', '🍒', '🍒'])
 const spinning = ref(false)
 const isWin = ref(false)
 const resultText = ref<string | null>(null)
-const historyRef = ref<InstanceType<typeof HistoryPanel> | null>(null)
+const historyRef = ref<InstanceType<typeof ToolsHistoryPanel> | null>(null)
 const reelRefs = ref<HTMLElement[]>([])
 
-const { pick } = useSeededRandom()
+const { pick, randomInt } = useSeededRandom()
 
 const winClass = computed(() => isWin.value ? 'text-yellow-500 drop-shadow-glow' : 'text-gray-700 dark:text-gray-300')
 
@@ -44,7 +45,7 @@ function spin() {
   isWin.value = false
   resultText.value = null
 
-  const results = pick(symbols, 3)
+  const results = Array.from({ length: 3 }, () => symbols[randomInt(0, symbols.length - 1)])
   const timings = [0.3, 0.5, 0.7]
 
   results.forEach((symbol, i) => {

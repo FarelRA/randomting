@@ -1,8 +1,6 @@
 import { getVapidPublicKey } from '../../utils/push'
 
-if (!globalThis.__pushSubscriptions) {
-  globalThis.__pushSubscriptions = new Map<string, any>()
-}
+const subscriptions = globalThis.__pushSubscriptions ??= new Map<string, any>()
 
 export default defineEventHandler(async (event) => {
   const body = await readBody(event)
@@ -10,7 +8,7 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, message: 'Invalid subscription' })
   }
   const userId = event.context.auth?.userId || 'anonymous'
-  globalThis.__pushSubscriptions.set(body.endpoint, { ...body, userId, createdAt: Date.now() })
+  subscriptions.set(body.endpoint, { ...body, userId, createdAt: Date.now() })
   return { success: true }
 })
 
